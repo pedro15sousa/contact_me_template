@@ -26,6 +26,23 @@
         }
     </script>
 
+    <script type="text/javascript">
+      function validate() {
+        var firstName = document.forms["myForm"]["first_name"].value;
+        var lastName = document.forms["myForm"]["last_name"].value;
+        var email = document.forms["myForm"]["email"].value;
+        var messageSubject = document.forms["myForm"]["message_subject"].value;
+        var messageContent = document.forms["myForm"]["message_content"].value;
+        if ((firstName == "") || (lastName == "") || (email == "") || (messageSubject == "")){
+          alert("All fields must be filled out");
+          return false;
+        }else{
+          alert("Thank you for getting in touch! I'll get back to you asap!")
+          window.close()
+        }
+      }
+    </script>
+
 </head>
 <body>
 
@@ -34,7 +51,9 @@
   <small>If you would like to collaborate on a project, hire me, or just have a chat, feel free to contact me. I'll get back to you as soon as possible.</small>
 </h1>
 <section class="contact-wrap">
-  <form class="contact-form" method="post" id="contact-form">
+  <form class="contact-form" name='myForm' method="post" 
+     onsubmit="return validate()"
+    id="contact-form">
     <div class="col-sm-6">
       <div class="input-block">
         <input type="hidden" name="contact_number">
